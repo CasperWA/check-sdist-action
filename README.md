@@ -9,7 +9,7 @@ This very simple action will build a source distribution via `python setup.py sd
 There are two ways to use this action:
 
 1. First use the [`actions/checkout`](https://github.com/marketplace/actions/checkout) action to checkout your local repository, or
-2. Use the `repository` (and possibly `token`) inputs to specify any repository.
+2. Use the `repository` (and possibly `token` and `branch`) inputs to specify any repository.
 
 Concerning the second option, the token might be needed if the chosen repository is private.
 For more information about creating a personal access token (PAT) see [here](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).
@@ -36,6 +36,7 @@ jobs:
       uses: CasperWA/check-sdist-action@v1
       with:
         repository: octocat/Spoon-Knife
+        branch: develop
         token: ${{ secrets.MY_PAT }}
 ```
 
@@ -46,6 +47,7 @@ jobs:
 | Name | Description | Default |
 |:---:|:---|:---:|
 | `repository` | Repository for which to check building and installation of the source distribution.<br>Must be a GitHub repository and the value should be of the form `<owner>/<repository>` (see example under [Usage](#Usage)).<br>If not specified, the repository in the current working directory will be used (use [`actions/checkout`](https://github.com/marketplace/actions/checkout)). | '' |
+| `branch` | Branch in `repository`, for which to check building and installation of the source distribution.<br>If not specified, the default branch is used. | '' |
 | `token` | Token with which to retrieve `repository`.<br>Used for authentication. See [Usage](#Usage) for information about a personal access token (PAT). | '' |
 
 ## License
