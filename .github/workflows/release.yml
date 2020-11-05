@@ -20,7 +20,7 @@ jobs:
       run: .github/static/update_version.sh
 
     - name: Push updates to '${{ env.PUBLISH_UPDATE_BRANCH }}'
-      uses: ./
+      uses: CasperWA/push-protected@v2
       with:
         token: ${{ secrets.RELEASE_PAT }}
         branch: ${{ env.PUBLISH_UPDATE_BRANCH }}
