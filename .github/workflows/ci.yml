@@ -8,17 +8,23 @@ on:
 
 jobs:
 
-  external_repository:
+  repository:
     runs-on: ubuntu-latest
     name: Option 2 - Test `repository`
-
-    strategy:
-      matrix:
-        token: ["", "${{ secrets.GITHUB_TOKEN }}"]
 
     steps:
     - name: Build and install 'CasperWA/push-protected'
       uses: ./
       with:
         repository: CasperWA/push-protected
-        token: "${{ matrix.token }}"
+
+  repository_token:
+    runs-on: ubuntu-latest
+    name: Option 2 - Test `repository` and `token`
+
+    steps:
+    - name: Build and install 'CasperWA/push-protected' (using GITHUB_TOKEN)
+      uses: ./
+      with:
+        repository: CasperWA/push-protected
+        token: ${{ secrets.GITHUB_TOKEN }}
