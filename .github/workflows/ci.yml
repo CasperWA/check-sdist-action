@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  external_repository:
+    runs-on: ubuntu-latest
+    name: Option 2 - Test `repository`
+
+    strategy:
+      matrix:
+        token: ["", "${{ secrets.GITHUB_TOKEN }}"]
+
+    steps:
+    - name: Build and install 'CasperWA/push-protected'
+      uses: ./
+      with:
+        repository: CasperWA/push-protected
+        token: "${{ matrix.token }}"
