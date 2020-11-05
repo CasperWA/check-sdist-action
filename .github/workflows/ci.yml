@@ -13,6 +13,9 @@ jobs:
     name: Option 2 - Test `repository`
 
     steps:
+    - name: Checkout this repository
+      uses: actions/checkout@v2
+
     - name: Build and install 'CasperWA/push-protected'
       uses: ./
       with:
@@ -23,6 +26,9 @@ jobs:
     name: Option 2 - Test `repository` and `token`
 
     steps:
+    - name: Checkout this repository
+      uses: actions/checkout@v2
+
     - name: Build and install 'CasperWA/push-protected' (using GITHUB_TOKEN)
       uses: ./
       with:
