@@ -10,27 +10,43 @@ jobs:
 
   repository:
     runs-on: ubuntu-latest
-    name: Option 2 - Test `repository`
+    name: Test `repository`
 
     steps:
-    - name: Checkout this repository
+    - name: Option 2 - Checkout this repository
       uses: actions/checkout@v2
 
-    - name: Build and install 'CasperWA/push-protected'
+    - name: Build and install 'good' test package
       uses: ./
       with:
-        repository: CasperWA/push-protected
+        repository: CasperWA/check-sdist-action
+        branch: CI-test_good_package
 
   repository_token:
     runs-on: ubuntu-latest
-    name: Option 2 - Test `repository` and `token`
+    name: Test `repository` and `token`
 
     steps:
     - name: Checkout this repository
       uses: actions/checkout@v2
 
-    - name: Build and install 'CasperWA/push-protected' (using GITHUB_TOKEN)
+    - name: Build and install 'good' test package (using GITHUB_TOKEN)
       uses: ./
       with:
         repository: CasperWA/push-protected
+        branch: CI-test_good_package
         token: ${{ secrets.GITHUB_TOKEN }}
+
+  fail_bad_package:
+    runs-on: ubuntu-latest
+    name: Test action fails for 'bad' package
+
+    steps:
+    - name: Option 2 - Checkout this repository
+      uses: actions/checkout@v2
+
+    - name: Build and install 'bad' test package
+      uses: ./
+      with:
+        repository: CasperWA/check-sdist-action
+        branch: CI-test_bad_package
