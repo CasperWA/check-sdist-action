@@ -15,6 +15,12 @@ if [ -n "${INPUT_REPOSITORY}" ]; then
         echo "Retrieving ${INPUT_REPOSITORY} (without a token) ... DONE!"
     fi
     cd target_repo
+
+    if [ -n "${INPUT_BRANCH}" ]; then
+        echo "Checking out the '${INPUT_BRANCH}' branch ..."
+        git checkout -f ${INPUT_BRANCH}
+        echo "Checking out the '${INPUT_BRANCH}' branch ... DONE!"
+    fi
 fi
 
 # Build source distribution

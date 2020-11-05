@@ -11,6 +11,10 @@ inputs:
     description: "Repository for which to check building and installation of the source distribution."
     required: false
     default: ""
+  branch:
+    description: "Branch in `repository`, for which to check building and installation of the source distribution."
+    required: false
+    default: ""
   token:
     description: "Token with which to retrieve `repository`."
     required: false
